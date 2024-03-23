@@ -1,12 +1,22 @@
 @extends('layout.app')
 
 @section('container')
+    @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <ul class="list-disc list-inside">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="/provinsi/store" method="post" class="mb-8">
         @csrf
-        <input type="text" name="provinsi" placeholder="Nama Provinsi" class="border border-gray-300 rounded-lg px-4 py-2 mr-2">
+        <input type="text" name="provinsi" placeholder="Nama Provinsi"
+            class="border border-gray-300 rounded-lg px-4 py-2 mr-2">
         <button type="submit" class="bg-red-400 text-white rounded-lg px-4 py-2">Tambah Provinsi</button>
     </form>
-    
+
     <table class="w-full">
         <thead>
             <tr class="bg-gray-200">

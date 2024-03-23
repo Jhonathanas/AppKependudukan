@@ -11,4 +11,9 @@ class Kabupaten extends Model
     protected $fillable = [
         'kabupaten', 'id_provinsi'
     ];
+
+    public function provinsi()
+    {
+        return $this->belongsTo(Provinsi::class, 'id_provinsi', 'id');
+    }
 }

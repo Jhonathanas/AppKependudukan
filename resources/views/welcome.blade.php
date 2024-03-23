@@ -22,8 +22,8 @@
                 @foreach ($penduduks as $penduduk)
                     <tr class="border-b border-gray-200">
                         <td class="py-2 px-4">
-                            <a href="/penduduks/{{ $penduduk->id }}/edit" class="bg-blue-500 text-white px-3 py-1 rounded-md mr-2">Edit</a>
-                            <form action="/penduduks/{{ $penduduk->id }}" method="post" class="inline">
+                            <a href="/penduduk/{{ $penduduk->id }}/edit" class="bg-blue-500 text-white px-3 py-1 rounded-md mr-2">Edit</a>
+                            <form action="/penduduk/{{ $penduduk->id }}" method="post" class="inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md">Hapus</button>

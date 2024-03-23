@@ -13,6 +13,8 @@ use App\Http\Controllers\PendudukController;
 
 Route::get('/' ,[PendudukController::class, 'home'])->name('home');
 
+Route::get('/penduduk/export', [PendudukController::class, 'export_excel'])->name('export');
+
 Route::get('/penduduk', [PendudukController::class, 'index'])->name('penduduk');
 Route::post('/penduduk', [PendudukController::class, 'store'])->name('penduduk.store');
 Route::get('/penduduk/{penduduk}', [PendudukController::class, 'show'])->name('penduduk.show');

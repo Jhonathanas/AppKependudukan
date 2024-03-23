@@ -6,6 +6,8 @@ use App\Models\Penduduk;
 use App\Models\Provinsi;
 use App\Models\Kabupaten;
 use Illuminate\Http\Request;
+use App\Exports\ExportPenduduk;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PendudukController extends Controller
 {
@@ -23,11 +25,24 @@ class PendudukController extends Controller
         $provinsis = Provinsi::all();
         return view('penduduk.index', compact('penduduks', 'kabupatens', 'provinsis'));
     }
-
+    function export_excel(){
+        return Excel::download(new ExportPenduduk, "penduduk.xlsx");
+    }
     public function store(Request $request)
     {
-        Penduduk::create($request->all());
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'NIK' => 'required|max:18',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'alamat' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required',
+        ]);
+        
+        Penduduk::create($validatedData);
         return redirect()->route('home');
+        
     }
 
     public function show(Penduduk $penduduk)
@@ -42,13 +57,23 @@ class PendudukController extends Controller
 
     public function update(Request $request, Penduduk $penduduk)
     {
-        $penduduk->update($request->all());
-        return redirect()->route('penduduk.index');
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'NIK' => 'required|max:18',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'alamat' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required',
+        ]);
+
+        $penduduk->update($validatedData);
+        return redirect()->route('home');
     }
 
     public function destroy(Penduduk $penduduk)
     {
         $penduduk->delete();
-        return redirect()->route('penduduk.index');
+        return redirect()->route('home');
     }
 }

@@ -1,7 +1,20 @@
 <?php
 
-return [
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\ExcelServiceProvider;
 
+
+return [
+    // 'providers' => [
+    //     /*
+    //      * Package Service Providers...
+    //      */
+    //     Maatwebsite\Excel\ExcelServiceProvider::class,
+    // ],
+    // 'aliases' => [
+        
+    //     'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+    // ],
     /*
     |--------------------------------------------------------------------------
     | Application Name
