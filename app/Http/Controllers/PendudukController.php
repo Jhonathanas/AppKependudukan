@@ -15,7 +15,7 @@ class PendudukController extends Controller
     public function home(Request $request)
     {
         $query = $request->input('query');
-        $penduduks = Penduduk::where('nama', 'LIKE', "%$query%")->simplePaginate(5);
+        $penduduks = Penduduk::where('nama', 'LIKE', "%$query%")->simplePaginate(10);
         return view('welcome', compact('penduduks'));
     }
     public function index()

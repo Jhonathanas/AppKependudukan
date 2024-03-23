@@ -29,7 +29,7 @@
                                 <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md">Hapus</button>
                             </form>
                         </td>
-                        <td class="py-2 px-4">{{ $loop->iteration }}</td>
+                        <td class="py-2 px-4">{{ $penduduk->id }}</td>
                         <td class="py-2 px-4">{{ $penduduk->nama }}</td>
                         <td class="py-2 px-4">{{ $penduduk->NIK }}</td>
                         <td class="py-2 px-4">{{ $penduduk->tanggal_lahir }}</td>
